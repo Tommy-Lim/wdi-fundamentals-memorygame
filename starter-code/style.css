@@ -30,6 +30,7 @@ nav a{
 }
 nav a:hover{
 	background-color: #aaaaaa;
+	/*border: 1px solid white;*/
 }
 .important{
 	font-size: 16px;
@@ -38,7 +39,11 @@ nav a:hover{
 	height: 80%;
 	width: 80%;
 	display: inline-block;
-	background-color: tan;
+	background-color: rgba(100,100,100,1);
+  	background: -webkit-radial-gradient(teal, white); /* Safari 5.1 to 6.0 */
+  	background: -o-radial-gradient(teal, white); /* For Opera 11.6 to 12.0 */
+  	background: -moz-radial-gradient(teal, white); /* For Firefox 3.6 to 15 */
+  	background: radial-gradient(teal, white); /* Standard syntax */
 	border-radius: 12px;
 	border: 1px solid black;
 }
@@ -47,7 +52,7 @@ nav a:hover{
 	width: 35%;
 	border: 1px solid rgba(0,0,0,1);
 	margin: 7%;
-	background-color: #ffff00;
+	background-color: rgb(255,0,0);
 	border-radius: 12px;
 	float: left;
 }
