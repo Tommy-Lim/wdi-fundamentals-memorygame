@@ -1,3 +1,5 @@
+/*Elements*/
+
 body{
 	text-align: center;
 }	
@@ -40,29 +42,58 @@ nav a:hover{
 	/*border: 1px solid white;*/
 }
 
+card{
+	/*0.74*/
+	height: 200px;
+	width: 148px;
+	border: 1px solid rgba(0,0,0,1);
+	margin: 5px;
+	background-image: url("card-back.jpg");
+	background-size: cover;
+	border-radius: 12px;
+	float: left;
+}
+
+
+/*Classes*/
+
 .important{
 	font-size: 16px;
 }
 
 .board{
-	height: 80%;
-	width: 80%;
+	height: 100%;
+	width: 100%;
 	display: inline-block;
 	background-color: rgba(100,100,100,1);
-  	background: -webkit-radial-gradient(teal, white); /* Safari 5.1 to 6.0 */
-  	background: -o-radial-gradient(teal, white); /* For Opera 11.6 to 12.0 */
-  	background: -moz-radial-gradient(teal, white); /* For Firefox 3.6 to 15 */
-  	background: radial-gradient(teal, white); /* Standard syntax */
+	background: url("Board-game-background.jpeg"); 
+	background-size: cover;
+  	/*background: -webkit-radial-gradient(teal, white); /* Safari 5.1 to 6.0 */
+  	/*background: -o-radial-gradient(teal, white); /* For Opera 11.6 to 12.0 */
+  	/*background: -moz-radial-gradient(teal, white); /* For Firefox 3.6 to 15 */
+  	/*background: radial-gradient(teal, white); /* Standard syntax */
 	border-radius: 12px;
 	border: 1px solid rgba(200,200,200,1);
 }
 
-.card{
+.queen{
 	height: 200px;
-	width: 35%;
+	width: 148px;
 	border: 1px solid rgba(0,0,0,1);
-	margin: 7%;
-	background-color: rgba(200,200,200,1);
+	margin: 5px;
+	background-image: url("queen.png");
+	background-size: cover;
+	border-radius: 12px;
+	float: left;
+}
+
+.king{
+	height: 200px;
+	width: 148px;
+	border: 1px solid rgba(0,0,0,1);
+	margin: 5px;
+	background-image: url("king.png");
+	background-size: cover;
 	border-radius: 12px;
 	float: left;
 }
@@ -72,8 +103,9 @@ nav a:hover{
 }
 
 .container{
-	width: 50%;
+	width: 640px;
 	clear: both;
+	margin: 0 auto;
 }
 
 .clearfix:after {
@@ -89,8 +121,24 @@ nav a:hover{
 	border: 1px solid red;
 }
 
+.scoringBar{
+	margin: 10px;
+}
+
+.scores{
+	display: inline-block;
+	font-size: 24px;
+	margin: 0px 30px 0px 5px;
+}
+
+
+/*JS Ids*/
+
 #userInput{
 	margin: 10px;
 }
 
+#num{
+	width: 132px;
+}
 
