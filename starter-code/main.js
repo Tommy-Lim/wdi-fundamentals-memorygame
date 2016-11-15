@@ -1,18 +1,3 @@
-// var cardOne = "queen";
-// var cardTwo = "queen";
-// var cardThree = "king";
-// var cardFour = "king";
-
-//Original test of JS from earlier section
-/*if(cardOne===cardTwo&&cardOne==="queen"){
-	alert("Match found! Two Queens!");
-}else if(cardOne===cardTwo&&cardOne==="king"){
-	alert("Match found! Two Kings!");
-} else{
-	alert("Sorry, try again!");
-}*/
-
-
 var buttonCreate = document.getElementById('button-create');
 var buttonFlip = document.getElementById('flip-cards');
 var buttonReset = document.getElementById('reset-board');
@@ -20,25 +5,6 @@ var cardNumberInput = document.getElementById('num');
 var wholeContainer = document.getElementById("whole-container");
 var numMatches = 0;
 var numTries = 0;
-
-
-//Add cards and make board after inputting number and clicking
-// var createCards = function(){
-// 	if(cardNumberInput.value===''){
-// 		addError(cardNumberInput);
-// 	} else{
-// 		wholeContainer.appendChild(gameBoard);
-// 		var num = document.getElementById('num').value;
-// 		for(i=0; i<num; i++){
-// 			var card = document.createElement('div');
-// 			card.setAttribute('id',"card"+i);
-// 			card.className = 'card';
-// 			gameBoard.appendChild(card);
-// 		}
-// 	}	
-// }
-// buttonCreate.addEventListener('click',createCards);
-
 
 //Create red border if card number not input
 var addError = function(input){
@@ -69,15 +35,25 @@ cardNumberInput.addEventListener('keypress',isEnter);
 //-------------Assignment 11 work below---------
 
 
-var cards = ['queen', 'king', 'queen', 'king'];
+var cards = ['queen', 'king', 'queen', 'king','queen', 'king', 'queen','king'];
 var allCards = document.getElementsByTagName('card');
 
 var cardsInPlay = [];
 
 var createBoard = function(){
+	//Scoring bar creation
+	var scoringBar = document.createElement('div');
+	scoringBar.setAttribute('id','scoringBar');
+	scoringBar.className='scoringBar';
+	scoringBar.innerHTML="<matches>Matches: <div class='scores' id='matches'>0</div></matches><tries>Tries: <div class='scores' id='tries'>0</div></tries>"
+	wholeContainer.appendChild(scoringBar);
+	
+	//Game board creation
 	var gameBoard = document.createElement('div');
 	gameBoard.setAttribute('id','game-board')
-	gameBoard.className="board";
+	gameBoard.className = "board";
+	
+	//Game board card creation
 	if(cardNumberInput.value===''){
 		addError(cardNumberInput);
 	} else{
@@ -99,18 +75,6 @@ var createBoard = function(){
 buttonCreate.addEventListener('click',createBoard);
 
 var showCard = function(){
-	// cardsInPlay.push(this.getAttribute('data-card'));
-	// this.className = this.getAttribute('data-card');
-	// if (cardsInPlay.length===2){
-	// 	if(cardsInPlay[0]===cardsInPlay[1]){
-	// 		alert("Match found!");
-	// 		resetCards();	
-	// 	} else if(cardsInPlay.length===1){
-	// 		alert("No match found!");
-	// 		resetCards();
-	// 	}
-	// }
-
 	if(cardsInPlay.length===0){
 		cardsInPlay.push(this.getAttribute('id'));
 		this.className = this.getAttribute('data-card');
@@ -129,11 +93,16 @@ var isMatch = function(pair){
 	var dataOne = document.getElementById(pair[0]).getAttribute('data-card');
 	var dataTwo = document.getElementById(pair[1]).getAttribute('data-card');
 	if(dataOne===dataTwo){
-		alert("Match found!");
+		document.getElementById(pair[0]).className=dataOne+"Matched";
+		document.getElementById(pair[1]).className=dataTwo+"Matched";
 		cardsInPlay=[];
+		numTries++;
+		numMatches++;
+		document.getElementById('tries').textContent = numTries;
+		document.getElementById('matches').textContent = numMatches;
 	} else{
-		alert("No match found!");
-		//resetCards();
+		numTries++;
+		document.getElementById('tries').textContent = numTries;
 	}
 }
 
@@ -146,6 +115,11 @@ var flipCards = function(){
 
 var resetBoard = function(){
 	document.getElementById('game-board').remove();
+	numTries = 0;
+	numMatches = 0;
+	document.getElementById('tries').textContent = numTries;
+	document.getElementById('matches').textContent = numMatches;
 	createBoard();
+	document.getElementById('scoringBar').remove()
 }
 buttonReset.addEventListener('click', resetBoard);

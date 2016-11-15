@@ -98,6 +98,30 @@ card{
 	float: left;
 }
 
+.queenMatched{
+	height: 200px;
+	width: 148px;
+	border: 1px solid rgba(0,0,0,1);
+	margin: 5px;
+	background-image: url("queen.png");
+	background-size: cover;
+	border-radius: 12px;
+	float: left;
+	opacity: 0.5;
+}
+
+.kingMatched{
+	height: 200px;
+	width: 148px;
+	border: 1px solid rgba(0,0,0,1);
+	margin: 5px;
+	background-image: url("king.png");
+	background-size: cover;
+	border-radius: 12px;
+	float: left;
+	opacity: 0.5;
+}
+
 .name{
 	color: red;
 }
@@ -121,16 +145,11 @@ card{
 	border: 1px solid red;
 }
 
-.scoringBar{
-	margin: 10px;
-}
-
 .scores{
 	display: inline-block;
 	font-size: 24px;
 	margin: 0px 30px 0px 5px;
 }
-
 
 /*JS Ids*/
 
