@@ -14,7 +14,7 @@ var addError = function(input){
 	} else{
 		input.className='';
 	}
-}
+};
 
 //need to create this to add "enter" functionality
 var isEnter = function(e){
@@ -23,9 +23,9 @@ var isEnter = function(e){
 		//createCards();
 		createBoard();
 	}
-}
+};
 //anonymous function nomenclature requires you pass 'function(){func_name(input)}' for the function part
-cardNumberInput.addEventListener('blur',function(){addError(cardNumberInput)});
+cardNumberInput.addEventListener('blur',function(){addError(cardNumberInput);});
 
 //to add functionality of "enter"; the "keypress" passes the keystroke!!
 cardNumberInput.addEventListener('keypress',isEnter);
@@ -45,14 +45,14 @@ var createBoard = function(){
 	var scoringBar = document.createElement('div');
 	scoringBar.setAttribute('id','scoringBar');
 	scoringBar.className='scoringBar';
-	scoringBar.innerHTML="<matches>Matches: <div class='scores' id='matches'>0</div></matches><tries>Tries: <div class='scores' id='tries'>0</div></tries>"
+	scoringBar.innerHTML="<matches>Matches: <div class='scores' id='matches'>0</div></matches><tries>Tries: <div class='scores' id='tries'>0</div></tries>";
 	wholeContainer.appendChild(scoringBar);
-	
+
 	//Game board creation
 	var gameBoard = document.createElement('div');
-	gameBoard.setAttribute('id','game-board')
+	gameBoard.setAttribute('id','game-board');
 	gameBoard.className = "board";
-	
+
 	//Game board card creation
 	if(cardNumberInput.value===''){
 		addError(cardNumberInput);
@@ -64,14 +64,14 @@ var createBoard = function(){
 			//for random assignment of cards
 			//card.setAttribute('data-card',cards[Math.floor(Math.random()*2)]);
 			card.setAttribute('data-card',cards[i]);
-			card.setAttribute('id', "card"+i)
+			card.setAttribute('id', "card"+i);
 			card.className = '';
 			card.addEventListener('click',showCard);
 			gameBoard.appendChild(card);
 		}
 		num=0;
-	}	
-}
+	}
+};
 buttonCreate.addEventListener('click',createBoard);
 
 var showCard = function(){
@@ -87,7 +87,7 @@ var showCard = function(){
 		cardsInPlay.push(this.getAttribute('id'));
 		this.className = this.getAttribute('data-card');
 	}
-}
+};
 
 var isMatch = function(pair){
 	var dataOne = document.getElementById(pair[0]).getAttribute('data-card');
@@ -104,13 +104,13 @@ var isMatch = function(pair){
 		numTries++;
 		document.getElementById('tries').textContent = numTries;
 	}
-}
+};
 
 var flipCards = function(){
 	document.getElementById(cardsInPlay[0]).className='';
 	document.getElementById(cardsInPlay[1]).className='';
 	cardsInPlay=[];
-}
+};
 //buttonFlip.addEventListener('click',flipCards);
 
 var resetBoard = function(){
@@ -120,6 +120,6 @@ var resetBoard = function(){
 	document.getElementById('tries').textContent = numTries;
 	document.getElementById('matches').textContent = numMatches;
 	createBoard();
-	document.getElementById('scoringBar').remove()
-}
+	document.getElementById('scoringBar').remove();
+};
 buttonReset.addEventListener('click', resetBoard);
